@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Golf Tracker (PWA)</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0B8457">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Golf Tracker</h1>
+    <button id="btnStart">Start Round</button>
+    <button id="btnEnd" disabled>End</button>
+  </header>
+
+  <div id="map"></div>
+
+  <div id="controls">
+    <div class="hole">
+      <button id="prevHole">◀</button>
+      <span>Hole <span id="holeNum">1</span></span>
+      <button id="nextHole">▶</button>
+    </div>
+
+    <div class="clubs">
+      <label for="clubSelect">Club</label>
+      <select id="clubSelect">
+        <option>Driver</option>
+        <option>3W</option>
+        <option>5W</option>
+        <option>3H</option>
+        <option>4H</option>
+        <option>3i</option>
+        <option>4i</option>
+        <option>5i</option>
+        <option>6i</option>
+        <option>7i</option>
+        <option>8i</option>
+        <option>9i</option>
+        <option>PW</option>
+        <option>GW</option>
+        <option>SW</option>
+        <option>LW</option>
+      </select>
+    </div>
+
+    <div class="cta">
+      <button id="markShot" class="primary">Mark Shot</button>
+      <button id="markPutt">Putt</button>
+      <button id="markPenalty">Penalty</button>
+    </div>
+
+    <div class="score">
+      <label>Strokes <input type="number" id="strokes" min="0" value="0"></label>
+      <label>Putts <input type="number" id="putts" min="0" value="0"></label>
+      <label>Penalties <input type="number" id="penalties" min="0" value="0"></label>
+    </div>
+
+    <div class="actions">
+      <button id="exportCSV">Export CSV</button>
+      <button id="summary">Summary</button>
+    </div>
+
+    <div id="banner"></div>
+  </div>
+
+  <div id="summaryPanel" class="sheet hidden">
+    <h2>Round Summary</h2>
+    <div id="cards"></div>
+    <h3>Average Distance by Club</h3>
+    <canvas id="clubChart" height="240"></canvas>
+    <h3>Dispersion by Club</h3>
+    <canvas id="dispersionChart" height="280"></canvas>
+    <button id="closeSummary">Close</button>
+  </div>
+
+  <script src="pwa.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
